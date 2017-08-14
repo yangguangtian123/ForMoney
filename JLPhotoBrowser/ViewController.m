@@ -51,6 +51,13 @@
 
 - (void)verifyFingerprint{
     
+    //测试
+    [self getSuccess];
+    return;
+    
+
+    
+    
     LAContext *myContext = [[LAContext alloc] init];
     NSError *authError = nil;
     NSString *myLocalizedReasonString = @"We need to verify your fingerprint to confirm your identity";
