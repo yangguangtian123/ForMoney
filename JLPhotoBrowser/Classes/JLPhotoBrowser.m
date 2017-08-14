@@ -101,7 +101,7 @@
 
 - (void)playVideohehe{
     
-    NSString *path = [[NSBundle mainBundle]pathForResource:@"041114-579" ofType:@"mp4"];
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"o0131g70phxm701" ofType:@"mp4"];
     //NSString *path = [[NSBundle mainBundle]pathForResource:@"o0131g70phxm701" ofType:@"mp4"];
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
 
