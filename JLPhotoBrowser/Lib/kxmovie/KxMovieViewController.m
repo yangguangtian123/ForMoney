@@ -115,7 +115,10 @@ static NSMutableDictionary * gHistory;
     
     UITapGestureRecognizer *_tapGestureRecognizer;
     UITapGestureRecognizer *_doubleTapGestureRecognizer;
-    UITapGestureRecognizer * _thirdTapGestureRecognizer;
+//    UITapGestureRecognizer * _thirdTapGestureRecognizer;
+    
+    UILongPressGestureRecognizer *_longpressGestureRecognizer;
+    
     
     UIPanGestureRecognizer *_panGestureRecognizer;
         
@@ -492,13 +495,27 @@ _messageLabel.hidden = YES;
             else
                 frameView.contentMode = UIViewContentModeScaleAspectFit;
             
-        }else if(sender == _thirdTapGestureRecognizer){
-            self.view.alpha = 0;
         }
+        
+//        else if(sender == _thirdTapGestureRecognizer){
+//            self.view.alpha = 0;
+//        }
         
         
     }
 }
+
+
+- (void)handleLongPress:(UILongPressGestureRecognizer *)sender{
+    if(sender.state == UIGestureRecognizerStateBegan){
+        self.view.alpha = 0;
+
+    }
+}
+
+
+
+
 
 - (void) handlePan: (UIPanGestureRecognizer *) sender
 {
@@ -804,19 +821,29 @@ _messageLabel.hidden = YES;
     _doubleTapGestureRecognizer.numberOfTapsRequired = 2;
     
     
-    _thirdTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
-     _thirdTapGestureRecognizer.numberOfTapsRequired = 3;
+//    _thirdTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+//     _thirdTapGestureRecognizer.numberOfTapsRequired = 3;
+//    
+    
+    _longpressGestureRecognizer = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(handleLongPress:)];
+    
+    
+    
 
     
     
     [_tapGestureRecognizer requireGestureRecognizerToFail: _doubleTapGestureRecognizer];
-    [_tapGestureRecognizer requireGestureRecognizerToFail: _thirdTapGestureRecognizer];
-    [_doubleTapGestureRecognizer requireGestureRecognizerToFail:_thirdTapGestureRecognizer];
+//    [_tapGestureRecognizer requireGestureRecognizerToFail: _thirdTapGestureRecognizer];
+//    [_doubleTapGestureRecognizer requireGestureRecognizerToFail:_thirdTapGestureRecognizer];
     
     
     [view addGestureRecognizer:_doubleTapGestureRecognizer];
     [view addGestureRecognizer:_tapGestureRecognizer];
-    [view addGestureRecognizer:_thirdTapGestureRecognizer];
+    [view addGestureRecognizer:_longpressGestureRecognizer];
+    
+    
+    
+//    [view addGestureRecognizer:_thirdTapGestureRecognizer];
     
     
 //    _panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
