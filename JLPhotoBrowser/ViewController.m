@@ -30,14 +30,11 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     
-    
-   //JLImageListView *imageListView = [[JLImageListView alloc] initWithFrame:CGRectMake((ScreenWidth-250)/2, 50, 250, ScreenHeight)];
-   // [self.view addSubview:imageListView];
-    
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(20, 150, ScreenWidth-40, 40)];
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(20, 150, ScreenWidth-40, 100)];
     label.textColor = [UIColor greenColor];
     label.textAlignment = NSTextAlignmentCenter;
-    label.text = @"呵呵呵";
+    label.numberOfLines = 3;
+    label.text = @"请点击四次\n 然后指纹识别 \n打开";
     [self.view addSubview:label];
     label.userInteractionEnabled = YES;
 
@@ -45,8 +42,6 @@
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(verifyFingerprint)];
     tap.numberOfTapsRequired = 4 ;
-    
-    //UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(getSuccess)];
 
     
     [label addGestureRecognizer:tap];
